@@ -16,6 +16,9 @@ So I want the restaurant roulette app to decide for me
 GIVEN a Food dashboard 
 WHEN I click on find restaurant button
 THEN user is presented with option to select zip code
+WHEN I enter valid zip code, I am promted to select a type of food category
+THEN user is presented with an option to select price range
+WHEN I set the price range filter, then I am prompted to set distance radius from the zip input
 ```
 
 ## Mock-Up
