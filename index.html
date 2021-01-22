@@ -12,7 +12,7 @@
     <!-- Bulma Version 0.9.0-->
     <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
     <link rel="stylesheet" type="text/css" href="./css/style.css">
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -29,10 +29,10 @@
                 <!--hidden container for buttons-->
                 <div id="button-container" class="hide">
                     <div>
-                        <button id=btn1 class="button is-info is-large is-fullwidth mb-3">Button 1</button>
-                        <button id=btn2 class="button is-info is-large is-fullwidth mb-3">Button 2</button>
-                        <button id=btn3 class="button is-info is-large is-fullwidth mb-3">Button 3</button>
-                        <button id=btn4 class="button is-info is-large is-fullwidth mb-3">Button 4</button>
+                        <button id="btn1" class="button is-info is-large is-fullwidth mb-3">Button 1</button>
+                        <button id="btn2" class="button is-info is-large is-fullwidth mb-3">Button 2</button>
+                        <button id="btn3" class="button is-info is-large is-fullwidth mb-3">Button 3</button>
+                        <button id="btn4" class="button is-info is-large is-fullwidth mb-3">Button 4</button>
                     </div>
                 </div>
                 <!--zip code form on landing page, not hidden-->
@@ -42,12 +42,13 @@
                             <input class="input" type="text" placeholder="Enter your Zip Code to Start">
                         </p>
                         <p class="control">
-                            <a id=btnZip class="button is-info">
+                            <a id="btnZip" class="button is-info">
                                 Let's Eat!
                             </a>
                         </p>
                     </div>
                 </div>
+                <p id="error"></p>
             </div>
         </div>
     </div>
@@ -61,7 +62,7 @@
         </div>
     </nav>
 </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <script src="./scripts/script.js"></script>
 
 </html>

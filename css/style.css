@@ -22,3 +22,6 @@ h2 {
 .hide {
   display: none;
 }
+.show {
+  display: block;
+}
