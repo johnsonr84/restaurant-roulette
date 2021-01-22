@@ -16,6 +16,7 @@
 </head>
 
 <body>
+    <!--header-->
     <h3 class="title is-1 is-spaced has-text-centered has-text-light pt-5 pb-5">Restaurant Roulette</h3>
     </div>
     <div class="hero is-fullheight-with-navbar">
@@ -24,13 +25,28 @@
                 <h2 class="subtitle has-text-light pb-5">
                     Can't decide on where to eat?  Answer a few simple questions and we will decide for you!
                 </h2>
+                <!--hidden container for buttons-->
+                <div class="button-container">
+                    <div>
+                      <button class="hide" id=btn1 class="button is-info">Button 1</button>
+                    </div>
+                    <div>
+                      <button class="hide" id=btn2 class="button is-info">Button 2</button>
+                    </div>
+                    <div>
+                      <button class="hide" id=btn3 class="button is-info">Button 3</button>
+                    </div><div>
+                    <button class="hide" id=btn4 class="button is-info">Button 4</button>
+                    </div>
+                  </div>
+                  <!--zip code form on landing page, not hidden-->
                 <div class="box">
                     <div class="field is-grouped">
                         <p class="control is-expanded">
                             <input class="input" type="text" placeholder="Enter your Zip Code to Start">
                         </p>
                         <p class="control">
-                            <a class="button is-info">
+                            <a id=btnZip class="button is-info">
                                 Let's Eat!
                             </a>
                         </p>
@@ -39,6 +55,7 @@
             </div>
         </div>
     </div>
+    <!--footer-->
     <nav class="navbar is-fixed-bottom">
         <div class="container">
             <div class="navbar-start"></div>
@@ -48,5 +65,6 @@
         </div>
       </nav>
 </body>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./scripts/script.js"></script>
 </html>
