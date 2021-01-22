@@ -8,11 +8,11 @@
     <title>Restaurant Roulette</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=BioRhyme&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=BioRhyme&display=swap" rel="stylesheet">
     <!-- Bulma Version 0.9.0-->
     <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
     <link rel="stylesheet" type="text/css" href="./css/style.css">
-    
+
 </head>
 
 <body>
@@ -22,24 +22,20 @@
     <div class="hero is-fullheight-with-navbar">
         <div class="container has-text-centered">
             <div class="column is-8 is-offset-2">
-                <h2 class="subtitle has-text-light pb-5">
-                    Can't decide on where to eat?  Answer a few simple questions and we will decide for you!
+                <!--question area-->
+                <h2 id="questions" class="subtitle has-text-light pb-5">
+                    Can't decide on where to eat? Answer a few simple questions and we will decide for you!
                 </h2>
                 <!--hidden container for buttons-->
-                <div class="button-container">
+                <div id="button-container" class="hide">
                     <div>
-                      <button class="hide" id=btn1 class="button is-info">Button 1</button>
+                        <button id=btn1 class="button is-info is-large is-fullwidth mb-3">Button 1</button>
+                        <button id=btn2 class="button is-info is-large is-fullwidth mb-3">Button 2</button>
+                        <button id=btn3 class="button is-info is-large is-fullwidth mb-3">Button 3</button>
+                        <button id=btn4 class="button is-info is-large is-fullwidth mb-3">Button 4</button>
                     </div>
-                    <div>
-                      <button class="hide" id=btn2 class="button is-info">Button 2</button>
-                    </div>
-                    <div>
-                      <button class="hide" id=btn3 class="button is-info">Button 3</button>
-                    </div><div>
-                    <button class="hide" id=btn4 class="button is-info">Button 4</button>
-                    </div>
-                  </div>
-                  <!--zip code form on landing page, not hidden-->
+                </div>
+                <!--zip code form on landing page, not hidden-->
                 <div class="box">
                     <div class="field is-grouped">
                         <p class="control is-expanded">
@@ -61,10 +57,11 @@
             <div class="navbar-start"></div>
             <div class="navbar-brand"><a class="navbar-item" href="#">&copy; 2021 The Tripods Team</a></div>
             <div class="navbar-end"></div>
-          </div>
         </div>
-      </nav>
+        </div>
+    </nav>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="./scripts/script.js"></script>
+
 </html>
