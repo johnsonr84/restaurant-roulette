@@ -1,5 +1,10 @@
 //$(document).ready
 $(document).ready(function () {
+    //Variable
+    var clicked = 0;
+    //Clear localStorage every used
+    localStorage.clear();
+
     //Setting up the welcome page
     //Setting up the button
 
@@ -15,27 +20,38 @@ $(document).ready(function () {
         } else {
             $("#error").text('');
             question();
+            console.log(clicked)
+            clicked++
         }
+        
     });
     //Creating a function to go through the question
-    var questions = ["Meat or no Meat", "What category of Food do you want to eat?", "What is your price range?", "Distance from zip?"];
-var clicked = 0;
+    var questions = ["Meat or No Meat", "What category of Food do you want to eat?", "What is your price range?", "Distance from zip?"];
+    
     function question() {
         //Setting up Questions 1 to 3 page
-        for (let i = 0; i < questions.length; i++) {
+        // for (let i = 0; i < questions.length; i++) {
             if (clicked === 0 && questions[0]) {
                 $(".box").addClass("hide");
                 $("#questions").text(questions[0]);
                 //Setting up button for category
-                $("#button-container").attr("style", "display: block");
-                $("#btn1").text("Meayt");
+                $("#button-container").removeClass("hide");
+                $("#btn1").text("Meat");
                 $("#btn2").text("No Meat");
                 $("#btn3").addClass("hide");
                 $("#btn4").addClass("hide");
-               
                 //console.log(this);
+                //Create a localStorarge to record the user choice
+                $("#btn1").click(function () {
+                    localStorage.setItem("userChoice", "Meat")
+                })
+                $("#btn2").click(function () {
+                    localStorage.setItem("userChoice", "No Meat")
+                })
+                clicked++
+                console.log(clicked)
             };
-            // if (questions[1]) {
+            // if (clicked === 1 && questions[1]) {
             //     $(".box").addClass("hide");
             //     $("#questions").text(questions[1]);
             //     //Setting up button for category
@@ -45,8 +61,10 @@ var clicked = 0;
             //     $("#btn3").text("Italian");
             //     $("#btn4").text("European");
             //     //console.log(this);
+            //     console.log(clicked)
+            //     clicked++
             // }
-        };
+        // };
         // //Adding an event listener to each button
         // //Asian category
         // $("#btn1").click(function () {
