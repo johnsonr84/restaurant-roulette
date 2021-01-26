@@ -1,7 +1,7 @@
 //$(document).ready
 $(document).ready(function () {
-    //Variable
-    var clicked = 0;
+    var zipAPI = "3TUtnF6zFHHIVFCDd6pcO8izME9T2DA8ohrHRUZ392YILAIEFEyTHv8uK1UlVOYp"
+    var zomAPI = "1f187162b82ab83fb9770f3fdc8f7124"
     //Clear localStorage every used
     localStorage.clear();
 
@@ -11,7 +11,6 @@ $(document).ready(function () {
     $("#btnZip").on("click", function (event) {
         event.preventDefault();
         var zipCode = $(".input").val().trim();
-        // alert(zipCode)
         // console.log(zipCode);
         //Condiction
         if (zipCode === '') {
@@ -19,116 +18,43 @@ $(document).ready(function () {
             $("#error").attr("style", "color: white");
         } else {
             $("#error").text('');
-            question();
-            console.log(clicked)
-            clicked++
+
+
         }
-        
-    });
-    //Creating a function to go through the question
-    var questions = ["Meat or No Meat", "What category of Food do you want to eat?", "What is your price range?", "Distance from zip?"];
+        // Ajax call for zip code API
+        var queryURL = "https://cors-anywhere.herokuapp.com/https://www.zipcodeapi.com/rest/" + zipAPI + "/info.json/" + zipCode + "/degrees";
+
+        $.ajax({
+
+            url: queryURL,
+            method: "GET",
+        }).then(function (response) {
+            console.log(response);
+            var lat = response.lat;
+            var lng = response.lng;
+
+            //Zomato API cuisine call
+            var queryURL = "https://cors-anywhere.herokuapp.com/https://developers.zomato.com/api/v2.1/cuisines?lat=" + lat + "&lon=" + lng;
+
+            $.ajax({
     
-    function question() {
-        //Setting up Questions 1 to 3 page
-        // for (let i = 0; i < questions.length; i++) {
-            if (clicked === 0 && questions[0]) {
-                $(".box").addClass("hide");
-                $("#questions").text(questions[0]);
-                //Setting up button for category
-                $("#button-container").removeClass("hide");
-                $("#btn1").text("Meat");
-                $("#btn2").text("No Meat");
-                $("#btn3").addClass("hide");
-                $("#btn4").addClass("hide");
-                //console.log(this);
-                //Create a localStorarge to record the user choice
-                $("#btn1").click(function () {
-                    localStorage.setItem("userChoice", "Meat")
-                })
-                $("#btn2").click(function () {
-                    localStorage.setItem("userChoice", "No Meat")
-                })
-                clicked++
-                console.log(clicked)
-            };
-            // if (clicked === 1 && questions[1]) {
-            //     $(".box").addClass("hide");
-            //     $("#questions").text(questions[1]);
-            //     //Setting up button for category
-            //     $("#button-container").attr("style", "display: block");
-            //     $("#btn1").text("Asian");
-            //     $("#btn2").text("American");
-            //     $("#btn3").text("Italian");
-            //     $("#btn4").text("European");
-            //     //console.log(this);
-            //     console.log(clicked)
-            //     clicked++
-            // }
-        // };
-        // //Adding an event listener to each button
-        // //Asian category
-        // $("#btn1").click(function () {
-        //     //alert($("#btn1").text());
-        //     var category = $("<h1>");
-        //     category.text("Asian");
-        //     category.attr("style", "margin-top: 20px")
-        //     $("#questions").append(category);
-        //     $("#btn1").text("Japanese");
-        //     $("#btn2").text("Vietnamese");
-        //     $("#btn3").text("Thai");
-        //     $("#btn4").text("Filipino");
-        // });
-        // //American category
-        // $("#btn2").click(function () {
-        //     //alert($("#btn2").text());
-        //     var category = $("<h1>");
-        //     category.text("American");
-        //     category.attr("style", "margin-top: 20px")
-        //     $("#questions").append(category);
-        //     $("#btn1").text("1");
-        //     $("#btn2").text("2");
-        //     $("#btn3").text("3");
-        //     $("#btn4").text("4");
-        // });
-        // //American category
-        // $("#btn3").click(function () {
-        //     //alert($("#btn3").text());
-        //     var category = $("<h1>");
-        //     category.text("Italian");
-        //     category.attr("style", "margin-top: 20px")
-        //     $("#questions").append(category);
-        //     $("#btn1").text("1");
-        //     $("#btn2").text("2");
-        //     $("#btn3").text("3");
-        //     $("#btn4").text("4");
-        // });
-    }
+                method: "GET",
+                crossDomain: true,
+                url: queryURL,
+                dataType: "json",
+                async: true,
+                headers: {
+                    "user-key": zomAPI
+                },
+            }).then(function (response) {
+                console.log(response);
+                
+                
+            })
+        })
+       
+       
+    });
 
 
-
-
-
-    //Setting up quesutions 1 button
-
-    //Setting up question 2 page
-
-    //Setting up question 2 button
-
-    //Setting up question 3 page
-
-    //Setting up question 3 button
-
-    //Setting up question 4 page
-
-    //Setting up question 4 button
-
-
-
-
-
-    //Calling API through a function
-
-    //Calling API through a function for second query
-
-    //Seeting up the result page
 });
