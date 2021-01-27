@@ -33,9 +33,10 @@ $(document).ready(function () {
         }
         console.log(questions);
         function question() {
+            var clicked = 0;
             for (let i = 0; i < questions.length; i++) {
                 $("#questions").text("questions[i]");
-                if ($("#questions").text(questions[0])) {
+                if ($("#questions").text(questions[0]) && clicked === 0) {
                     $("#button-container").show();
                     $(".input").hide();
                     $("#cuisine").show();
@@ -43,8 +44,29 @@ $(document).ready(function () {
                     $("#price").hide();
                     $("#radius").hide();
                 }
+                clicked++ 
+                console.log(clicked)
+                if ($("#questions").text(questions[1]) && clicked === 1) {
+                    $("#button-container").show();
+                    $(".input").hide();
+                    $("#radius").show();
+                    $("#box").hide();
+                    $("#price").hide();
+                    $("#cuisine").hide();
+                }
+                clicked++ 
             }
-        }
+            if ($("#questions").text(questions[2]) && clicked === 2) {
+                $("#button-container").show();
+                $(".input").hide();
+                $("#price").show();
+                $("#box").hide();
+                $("#radius").hide();
+                $("#cuisine").hide();
+            } 
+        };
+    });
+
         // Ajax call for zip code API
         // var queryURL = "https://cors-anywhere.herokuapp.com/https://www.zipcodeapi.com/rest/" + zipAPI + "/info.json/" + zipCode + "/degrees";
         // $.ajax({
@@ -83,7 +105,7 @@ $(document).ready(function () {
         //         console.log(response);
         //     })
         // })
-    });
+
     $("#btnAmerican").on("click", function (event) {
         event.preventDefault();
         var American = $("#btnAmerican").val().trim();
