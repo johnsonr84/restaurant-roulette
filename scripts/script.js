@@ -2,11 +2,25 @@
 $(document).ready(function () {
     var zipAPI = "3TUtnF6zFHHIVFCDd6pcO8izME9T2DA8ohrHRUZ392YILAIEFEyTHv8uK1UlVOYp"
     var zomAPI = "1f187162b82ab83fb9770f3fdc8f7124"
-    var distanceInMiles = distanceInMetres / 1609;
+    // var distanceInMiles = distanceInMetres / 1609;
     //Clear localStorage every used
     localStorage.clear();
 
-    //Setting up the welcome page
+    //Transition backgrounds effect
+    var images=new Array('./css/bkgrd.jpg','./css/ramen.jpg','./css/taco.jpg', './css/waffle.jpg');
+    console.log("🚀 ~ file: script.js ~ line 11 ~ images", images)
+    var nextimage=0;
+    console.log("🚀 ~ file: script.js ~ line 13 ~ nextimage", nextimage)
+    doSlideshow();
+
+function doSlideshow(){
+    if(nextimage>=images.length){nextimage=0;}
+    $('body')
+    .css('background-image','url("'+images[nextimage++]+'")')
+    .fadeIn(7000,function(){
+        setTimeout(doSlideshow,7000);
+    });
+}
     //Setting up the button
 
     $("#btnZip").on("click", function (event) {
