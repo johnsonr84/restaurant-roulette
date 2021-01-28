@@ -3,9 +3,12 @@ $(document).ready(function () {
     var clicked = 0;
     var zipAPI = "3TUtnF6zFHHIVFCDd6pcO8izME9T2DA8ohrHRUZ392YILAIEFEyTHv8uK1UlVOYp"
     var zomAPI = "1f187162b82ab83fb9770f3fdc8f7124"
+    var storeData = []
+    var allInput = [];
+
     // var distanceInMiles = distanceInMetres / 1609;
     //Clear localStorage every used
-    localStorage.clear();
+    // localStorage.clear();
     //Transition backgrounds effect
     var images = new Array('./css/bkgrd.jpg', './css/ramen.jpg', './css/taco.jpg', './css/waffle.jpg');
     var nextImage = 0;
@@ -23,6 +26,7 @@ $(document).ready(function () {
     $("#btnZip").on("click", function (event) {
         event.preventDefault();
         var zipCode = $(".input").val().trim();
+        localStorage.setItem("zipcode", zipCode);
         // console.log(zipCode);
         //Condiction
         if (zipCode === '') {
@@ -35,43 +39,43 @@ $(document).ready(function () {
         console.log(questions);
 
         // Ajax call for zip code API
-        // var queryURL = "https://cors-anywhere.herokuapp.com/https://www.zipcodeapi.com/rest/" + zipAPI + "/info.json/" + zipCode + "/degrees";
-        // $.ajax({
-        //     url: queryURL,
-        //     method: "GET",
-        // }).then(function (response) {
-        //     console.log(response);
-        //     var lat = response.lat;
-        //     var lng = response.lng;
-        //     //Zomato API cuisine call
-        //     var queryURL = "https://cors-anywhere.herokuapp.com/https://developers.zomato.com/api/v2.1/cuisines?lat=" + lat + "&lon=" + lng;
-        //     $.ajax({
-        //         method: "GET",
-        //         crossDomain: true,
-        //         url: queryURL,
-        //         dataType: "json",
-        //         async: true,
-        //         headers: {
-        //             "user-key": zomAPI
-        //         },
-        //     }).then(function (response) {
-        //         console.log(response);
-        //     })
-        //     //API call for price range
-        //     var queryURL = "https://cors-anywhere.herokuapp.com/hhttps://developers.zomato.com/api/v2.1/cuisines?res_id=average_cost_for_two";
-        //     $.ajax({
-        //         method: "GET",
-        //         crossDomain: true,
-        //         url: queryURL,
-        //         dataType: "json",
-        //         async: true,
-        //         headers: {
-        //             "user-key": zomAPI
-        //         },
-        //     }).then(function (response) {
-        //         console.log(response);
-        //     })
-        // })
+        var zipQueryURL = "https://cors-anywhere.herokuapp.com/https://www.zipcodeapi.com/rest/" + zipAPI + "/info.json/" + zipCode + "/degrees";
+        $.ajax({
+            url: zipQueryURL,
+            method: "GET",
+        }).then(function (response) {
+            console.log(response);
+            var lat = response.lat;
+            var lng = response.lng;
+            //Zomato API cuisine call
+            var cuisineQueryURL = "https://cors-anywhere.herokuapp.com/https://developers.zomato.com/api/v2.1/cuisines?lat=" + lat + "&lon=" + lng;
+            $.ajax({
+                method: "GET",
+                crossDomain: true,
+                url: cuisineQueryURL,
+                dataType: "json",
+                async: true,
+                headers: {
+                    "user-key": zomAPI
+                },
+            }).then(function (response) {
+                console.log(response);
+            })
+            //API call for price range
+            var priceQueryURL = "https://cors-anywhere.herokuapp.com/hhttps://developers.zomato.com/api/v2.1/cuisines?res_id=average_cost_for_two";
+            $.ajax({
+                method: "GET",
+                crossDomain: true,
+                url: priceQueryURL,
+                dataType: "json",
+                async: true,
+                headers: {
+                    "user-key": zomAPI
+                },
+            }).then(function (response) {
+                console.log(response);
+            })
+        })
 
     });
     //Function for cuisine
@@ -93,25 +97,35 @@ $(document).ready(function () {
     };
     //event listener for button clicks
     $("button").on("click", function (event) {
+        // var cuisineInput = $("#cuisine").val();
+        //     console.log(cuisineInput)
+        // var radiusInput = $("#radius").val();
+        //     console.log(radiusInput)
+        // var priceInput = $("#price").val();
+        //     console.log(priceInput)
 
         event.preventDefault();
-        var userInput = $(this).val();
         clicked++;
-        console.log(userInput);
         startQuestions();
         console.log(clicked)
+        // pushing();
+        
+        var userInput = $(this).val();
+        allInput.push(userInput);
+        console.log(allInput);
+        localStorage.setItem("userInput", allInput);
     })
+
     //function for click
     function nextQuestion() {
         for (let i = 0; i < clicked.length; i++) {
             if (!$(this).val === "") {
-                
-                console.log(clicked)
-
+                // console.log(clicked)
             }
             startQuestions();
         }
     }
+
     function startQuestions() {
 
         if (clicked === 0) {
