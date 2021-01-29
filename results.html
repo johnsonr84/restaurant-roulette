@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Restaurant Roulette</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=BioRhyme&display=swap" rel="stylesheet">
+    <!-- Bulma Version 0.9.0-->
+    <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
+    <link rel="stylesheet" type="text/css" href="./css/result.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <!--header-->
+    <h3 class="title is-1 is-spaced has-text-centered has-text-light pt-5 pb-5">Restaurant Roulette</h3>
+    </div>
+    <div class="hero is-fullheight-with-navbar">
+
+        <!-- container to display restaurant results -->
+        <div class="container has-text-centered">
+            <div class="column is-8 is-offset-2 has-text-centered has-text-light">
+                <!--results area-->
+                <h1 id="resultMemo" class="subtitle has-text-light pb-5">
+                    We've randomly generated your restaurant selection. <br> Bon Appetit!
+                </h1>
+            </div>
+
+            <!--row to display restaurant name-->
+            <div class="columns is-mobile">
+                <div class="box column is-three-fifths is-offset-one-fifth has-text-dark">
+                    <Span class="restResult" id="restaurant">Restaurant Name Displayed Here</Span>
+                </div>
+            </div>
+
+            <!-- button to open google maps on mobile device and provide directions -->
+            <div>
+                <p class="go">
+                    <a id="btnGo" class="button is-info">
+                        Get Directions!
+                    </a>
+                </p>
+            </div>
+
+            <!--google maps to display location of restaurant-->
+            <div class="columns is-mobile">
+                <div class="box column is-three-fifths is-offset-one-fifth has-text-light">
+                    <!-- div element for map displayed here -->
+                    <div id="maps" class="ubtitle has-text-dark pb-5">
+                        <p>Google Map Displayed Here!</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <!--row to display restaurant photos/ google reviews-->
+            <div class="columns is-mobile">
+                <div id="reviews" class="box column is-three-fifths is-offset-one-fifth has-text-light">
+                    <Span class="restResult has-text-dark">Reviews Displayed Here!</Span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--footer-->
+    <nav class="navbar is-fixed-bottom">
+        <div class="container">
+            <div class="navbar-start"></div>
+            <div class="navbar-brand"><a class="navbar-item" href="#">&copy; 2021 The Tripods Team</a></div>
+            <div class="navbar-end"></div>
+        </div>
+        </div>
+    </nav>
+</body>
+
+<script src="./scripts/script.js"></script>
+<script src="./scripts/questions.js"></script>
+
+</html>
