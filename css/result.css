@@ -24,12 +24,6 @@ body {
     margin-bottom: 6rem;
 }
 
-#maps {
-    min-height: 250px;
-    padding: 1rem;
-    /* margin: 5rem; */
-  }
-
 .box {
     opacity: 80%;
     margin: 1rem;
@@ -51,3 +45,14 @@ body {
     display: block;
   }
 
+  /* #map {
+    height: 100%;
+  } */
+  /* Optional: Makes the sample page fill the window. */
+
+  /* html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  } */

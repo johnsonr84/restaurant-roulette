@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +13,11 @@
     <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1KSL3kCTsaGEQ4NCASBTECwjVnFSZ2uk&callback=initMap&libraries=&v=weekly"
+        defer></script> -->
 </head>
+
 <body>
     <!--header-->
     <h3 class="title is-1 is-spaced has-text-centered has-text-light pt-5 pb-5">Restaurant Roulette</h3>
@@ -27,22 +32,29 @@
                 <!--hidden container for buttons-->
                 <div id="button-container">
                     <div id="cuisine">
-                        <button value="American"  id="btnAmerican" class="button is-info is-large is-fullwidth mb-3">American</button>
-                        <button value="Italian"  id="btnItalian" class="button is-info is-large is-fullwidth mb-3">Italian</button>
-                        <button value="Mexican"  id="btnMexican" class="button is-info is-large is-fullwidth mb-3">Mexican</button>
-                        <button value="Asian"  id="btnAsian" class="button is-info is-large is-fullwidth mb-3">Asian</button>
+                        <button value="American" id="btnAmerican"
+                            class="button is-info is-large is-fullwidth mb-3">American</button>
+                        <button value="Italian" id="btnItalian"
+                            class="button is-info is-large is-fullwidth mb-3">Italian</button>
+                        <button value="Mexican" id="btnMexican"
+                            class="button is-info is-large is-fullwidth mb-3">Mexican</button>
+                        <button value="Asian" id="btnAsian"
+                            class="button is-info is-large is-fullwidth mb-3">Asian</button>
                     </div>
                     <div id="radius">
-                        <button value=".5"  id="radius1" class="button is-info is-large is-fullwidth mb-3">.5 Mile</button>
-                        <button value="1"  id="radius2" class="button is-info is-large is-fullwidth mb-3">1 Mile</button>
-                        <button value="2"  id="radius3" class="button is-info is-large is-fullwidth mb-3">2 Miles</button>
-                        <button value="5"  id="radius4" class="button is-info is-large is-fullwidth mb-3">5 Miles</button>
+                        <button value=".5" id="radius1" class="button is-info is-large is-fullwidth mb-3">.5
+                            Mile</button>
+                        <button value="1" id="radius2" class="button is-info is-large is-fullwidth mb-3">1 Mile</button>
+                        <button value="2" id="radius3" class="button is-info is-large is-fullwidth mb-3">2
+                            Miles</button>
+                        <button value="5" id="radius4" class="button is-info is-large is-fullwidth mb-3">5
+                            Miles</button>
                     </div>
                     <div id="price">
-                        <button value="10"  id="price1" class="button is-info is-large is-fullwidth mb-3">$10</button>
-                        <button value="15"  id="price2" class="button is-info is-large is-fullwidth mb-3">$15</button>
-                        <button value="20"  id="price3" class="button is-info is-large is-fullwidth mb-3">$20</button>
-                        <button value="100"  id="price4" class="button is-info is-large is-fullwidth mb-3">$100</button>
+                        <button value="10" id="price1" class="button is-info is-large is-fullwidth mb-3">$10</button>
+                        <button value="15" id="price2" class="button is-info is-large is-fullwidth mb-3">$15</button>
+                        <button value="20" id="price3" class="button is-info is-large is-fullwidth mb-3">$20</button>
+                        <button value="100" id="price4" class="button is-info is-large is-fullwidth mb-3">$100</button>
                     </div>
                 </div>
                 <!--zip code form on landing page, not hidden-->
@@ -74,4 +86,5 @@
 </body>
 <script src="./scripts/script.js"></script>
 <script src="./scripts/questions.js"></script>
+
 </html>
