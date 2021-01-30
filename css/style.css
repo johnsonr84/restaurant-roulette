@@ -1,7 +1,7 @@
 body {
   background-image: url(../css/bkgrd.jpg);
   background-position: center center;
-  transition: background 1s ease-in;
+  transition: 4s linear;
   background-repeat: no-repeat;
   background-size: cover;
   font-family: "BioRhyme", serif;
