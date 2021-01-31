@@ -6,7 +6,7 @@ $(document).ready(function () {
     var userInput = [];
     var radiusInput = '';
     var cuisineInput = '';
-    var priceInput = '';
+    // var priceInput = '';
     var lat = '';
     var lng = '';
     // var distanceInMiles = distanceInMetres / 1609;
@@ -32,7 +32,7 @@ $(document).ready(function () {
         var zipCode = $(".input").val().trim();
         localStorage.setItem("zip code", zipCode);
         if (zipCode === '') {
-            $("#error").text("Error: Zip code missing!");
+            $("#error").text("Oops, you didn't enter a ZIP!");
             $("#error").attr("style", "color: white");
         } else {
             $("#error").text('');
@@ -48,38 +48,38 @@ $(document).ready(function () {
         event.preventDefault();
         clicked++;
         startQuestions();
-        console.log(clicked)
+        console.log("clicked", clicked)
         userInput = $(this).val();
         allInput.push(userInput);
-        console.log(allInput);
+        console.log("allInput", allInput);
         localStorage.setItem("userInput", allInput);
         radiusInput = allInput[1];
-        console.log(radiusInput)
+        console.log("radiusInput", radiusInput)
         cuisineInput = allInput[0];
-        console.log(cuisineInput)
-        priceInput = allInput[2];
-        console.log(priceInput)
+        console.log("cuisineInput", cuisineInput)
+        // priceInput = allInput[2];
+        // console.log("priceInput", priceInput)
         searchCall(lat, lng, radiusInput, cuisineInput)
     })
     function zipSearch(zipCode) {
         // Ajax call for zip code API
-        var zipQueryURL = "https://cors-anywhere.herokuapp.com/https://api.zippopotam.us/us/" + zipCode;
+        var zipQueryURL = "https://api.zippopotam.us/us/" + zipCode;
         $.ajax({
             url: zipQueryURL,
             method: "GET",
         }).then(function (response) {
             console.log(response);
             lat = response.places[0].latitude;
-            console.log("🚀 ~ file: script.js ~ line 49 ~ lat", lat)
+            console.log("lat", lat)
             lng = response.places[0].longitude;
-            console.log("🚀 ~ file: script.js ~ line 50 ~ lng", lng)
+            console.log("lng", lng)
             searchCall(lat, lng, radiusInput, cuisineInput)
         })
     };
     //API call for search
     function searchCall(lat, lng, radiusInput, cuisineInput) {
 
-        var priceQueryURL = "https://cors-anywhere.herokuapp.com/https://developers.zomato.com/api/v2.1/search?lat=" + lat + "&lon=" + lng + "&radius=" + radiusInput + "&cuisines=" + cuisineInput;
+        var priceQueryURL = "https://developers.zomato.com/api/v2.1/search?&lat=" + lat + "&lon=" + lng + "&radius=" + radiusInput + "&cuisines=" + cuisineInput;
         $.ajax({
             method: "GET",
             crossDomain: true,
@@ -91,19 +91,10 @@ $(document).ready(function () {
             },
         }).then(function (response) {
             console.log(response);
-
+            console.log(priceQueryURL)
         })
 
     }
-
-
-
-
-
-
-
-
-
 //Function for cuisine
 function showCuisine() {
     $("#button-container,#cuisine").show();
@@ -116,11 +107,11 @@ function showRadius() {
     $(".input,#box,#price,#cuisine").hide();
 };
 //show prices buttons function
-function showPrice() {
-    $("#button-container,#price").show();
-    $(".input,#box,#radius,#cuisine").hide();
+// function showPrice() {
+//     $("#button-container,#price").show();
+//     $(".input,#box,#radius,#cuisine").hide();
 
-};
+// };
 
 
 //function for click
@@ -148,7 +139,7 @@ function startQuestions() {
 
     if (clicked === 2) {
         $("#questions").text(questions[2].question);
-        showPrice()
+        // showPrice()
         nextQuestion()
     }
 }
