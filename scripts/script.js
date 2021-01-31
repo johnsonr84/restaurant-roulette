@@ -9,8 +9,8 @@ $(document).ready(function () {
     // var priceInput = '';
     var lat = '';
     var lng = '';
-    // var distanceInMiles = distanceInMetres / 1609;
-
+    var results = [];
+    var restName = [];
     //Clear localStorage every used
     localStorage.clear();
     //Transition backgrounds effect
@@ -92,61 +92,67 @@ $(document).ready(function () {
         }).then(function (response) {
             console.log(response);
             console.log(priceQueryURL)
+            var result = response.restaurants;
+            r = [Math.floor(Math.random() * result.length)];
+            results = result[r];
+            // console.log(results)
+            // console.log(results.restaurant.name)
+            restName = results.restaurant.name
+            // localStorage.setItem("restaurantname", results.restaurant.name)
+            $("#restName").append(restName)
         })
 
     }
-//Function for cuisine
-function showCuisine() {
-    $("#button-container,#cuisine").show();
-    $(".input,#box,#price,#radius").hide();
+    //Function for cuisine
+    function showCuisine() {
+        $("#button-container,#cuisine").show();
+        $(".input,#box,#price,#radius").hide();
 
-};
-//show radius buttons function
-function showRadius() {
-    $("#button-container,#radius").show();
-    $(".input,#box,#price,#cuisine").hide();
-};
-//show prices buttons function
-// function showPrice() {
-//     $("#button-container,#price").show();
-//     $(".input,#box,#radius,#cuisine").hide();
+    };
+    //show radius buttons function
+    function showRadius() {
+        $("#button-container,#radius").show();
+        $(".input,#box,#price,#cuisine").hide();
+    };
+    //show prices buttons function
+    // function showPrice() {
+    //     $("#button-container,#price").show();
+    //     $(".input,#box,#radius,#cuisine").hide();
 
-// };
+    // };
 
 
-//function for click
-function nextQuestion() {
-    for (let i = 0; i < clicked.length; i++) {
-        if (!$(this).val === "") {
-            // console.log(clicked)
+    //function for click
+    function nextQuestion() {
+        for (let i = 0; i < clicked.length; i++) {
+            if (!$(this).val === "") {
+                // console.log(clicked)
+            }
+            startQuestions();
         }
-        startQuestions();
-    }
-}
-
-function startQuestions() {
-
-    if (clicked === 0) {
-        $("#questions").text(questions[0].question);
-        showCuisine()
-        nextQuestion()
-    }
-    if (clicked === 1) {
-        $("#questions").text(questions[1].question);
-        showRadius()
-        nextQuestion()
     }
 
-    if (clicked === 2) {
-        $("#questions").text(questions[2].question);
-        // showPrice()
-        nextQuestion()
+    function startQuestions() {
+
+        if (clicked === 0) {
+            $("#questions").text(questions[0].question);
+            showCuisine()
+            nextQuestion()
+        }
+        if (clicked === 1) {
+            $("#questions").text(questions[1].question);
+            showRadius()
+            nextQuestion()
+        }
+
+        if (clicked === 2) {
+            $("#questions").text(questions[2].question);
+            // showPrice()
+            nextQuestion()
+        }
     }
-}
 
-
-
-
-
+    // $("#restName").append(JSON.stringify(localStorage.getItem("restaurantname")))
+   
 
 });
