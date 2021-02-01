@@ -20,6 +20,9 @@ $(document).ready(function () {
   var reviewText = "";
   var idealReviewGrade = "";
   var idealReviewText = "";
+  var mapLng = parseInt(zomLng);
+  var mapLat =parseInt(zomLat);
+  
   //Clear localStorage every used
   //localStorage.clear();
   //Transition backgrounds effect
@@ -90,7 +93,6 @@ $(document).ready(function () {
       console.log(lat);
       lng = response.places[0].longitude;
       console.log(lng);
-    //   searchCall(lat, lng, radiusInput, cuisineInput);
     });
   }
   //API call for search
@@ -131,6 +133,7 @@ $(document).ready(function () {
       reviewText = results.restaurant.user_rating.rating_text;
       console.log(reviewText);
       localStorage.setItem("reviewText", reviewText);
+      initMap(mapLat, mapLng)
     });
   }
   //Function for cuisine
@@ -210,15 +213,16 @@ $(document).ready(function () {
   $(".review").text(idealReviewGrade + "/5 --- " + idealReviewText);
 
   // //Getting the map
-  function showMap() {
-    var mapProp = {
-      center: new google.maps.LatLng(zomLat, zomLng),
-      zoom: 5,
-    };
-    console.log(zomLat)
-    var map = new google.maps.Map(document.getElementById("map"), mapProp);
-    $("#map").append(map);
+  let map;
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: { lat: 0.0, lng: 0.0 },
+      zoom: 8,
+    });
   }
-  showMap();
+
   
+  initMap();
+  $("#map").append(map);
 });
