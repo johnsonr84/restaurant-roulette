@@ -17,6 +17,10 @@ $(document).ready(function () {
     var idealRestName = '';
     var zomLat = '';
     var zomLng = '';
+    var reviewGrade = '';
+    var reviewText = '';
+    var idealReviewGrade = '';
+    var idealReviewText = '';
     //Clear localStorage every used
     //localStorage.clear();
     //Transition backgrounds effect
@@ -116,6 +120,12 @@ $(document).ready(function () {
             console.log(zomLat);
             zomLng = results.restaurant.location.longitude;
             console.log(zomLng);
+            reviewGrade = results.restaurant.user_rating.aggregate_rating;
+            console.log(reviewGrade)
+            localStorage.setItem("reviewGrade", reviewGrade)
+            reviewText = results.restaurant.user_rating.rating_text;
+            console.log(reviewText)
+            localStorage.setItem("reviewText", reviewText)
         })
 
     }
@@ -195,7 +205,15 @@ $(document).ready(function () {
 
 
     });
-    
+
+
+    //Setting up the review part
+    idealReviewGrade = localStorage.getItem("reviewGrade", reviewGrade);
+    console.log(idealReviewGrade);
+    idealReviewText = localStorage.getItem("reviewText", reviewText);
+    console.log(idealReviewText);
+    $(".review").text(idealReviewGrade + "/5 --- " + idealReviewText);
+
     // //Getting the map
 
     // let map;
