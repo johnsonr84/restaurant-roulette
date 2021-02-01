@@ -212,7 +212,7 @@ $(document).ready(function () {
     console.log(idealReviewGrade);
     idealReviewText = localStorage.getItem("reviewText", reviewText);
     console.log(idealReviewText);
-    $(".review").text(idealReviewGrade + "/5 --- " + idealReviewText);
+    $(".review").text(idealReviewGrade + "/5 --- " + idealReviewText);aaaa
 
     // //Getting the map
 
