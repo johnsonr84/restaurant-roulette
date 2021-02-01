@@ -1,5 +1,6 @@
 //$(document).ready
 $(document).ready(function () {
+
     var clicked = 0;
     var zomAPI = "1f187162b82ab83fb9770f3fdc8f7124"
     var allInput = [];
@@ -10,9 +11,14 @@ $(document).ready(function () {
     var lat = '';
     var lng = '';
     var results = [];
-    var restName = [];
+    var restNameInput = '';
+    var result = '';
+    var restNameInputAll = [];
+    var idealRestName = '';
+    var zomLat = '';
+    var zomLng = '';
     //Clear localStorage every used
-    localStorage.clear();
+    //localStorage.clear();
     //Transition backgrounds effect
     var images = new Array('./css/bkgrd.jpg', './css/ramen.jpg', './css/taco.jpg', './css/waffle.jpg');
     var nextImage = 0;
@@ -37,6 +43,7 @@ $(document).ready(function () {
         } else {
             $("#error").text('');
             startQuestions();
+
         }
         console.log(zipCode)
         console.log(questions);
@@ -58,8 +65,9 @@ $(document).ready(function () {
         cuisineInput = allInput[0];
         console.log("cuisineInput", cuisineInput)
         // priceInput = allInput[2];
-        // console.log("priceInput", priceInput)
+        // console.log(priceInput)
         searchCall(lat, lng, radiusInput, cuisineInput)
+
     })
     function zipSearch(zipCode) {
         // Ajax call for zip code API
@@ -67,12 +75,13 @@ $(document).ready(function () {
         $.ajax({
             url: zipQueryURL,
             method: "GET",
+            async: false,
         }).then(function (response) {
             console.log(response);
             lat = response.places[0].latitude;
-            console.log("lat", lat)
+            console.log(lat)
             lng = response.places[0].longitude;
-            console.log("lng", lng)
+            console.log(lng)
             searchCall(lat, lng, radiusInput, cuisineInput)
         })
     };
@@ -85,21 +94,28 @@ $(document).ready(function () {
             crossDomain: true,
             url: priceQueryURL,
             dataType: "json",
-            async: true,
+            async: false,
             headers: {
                 "user-key": zomAPI
             },
         }).then(function (response) {
             console.log(response);
-            console.log(priceQueryURL)
-            var result = response.restaurants;
+            // console.log(priceQueryURL)
+            result = response.restaurants;
             r = [Math.floor(Math.random() * result.length)];
             results = result[r];
-            // console.log(results)
+            console.log(results)
             // console.log(results.restaurant.name)
-            restName = results.restaurant.name
-            // localStorage.setItem("restaurantname", results.restaurant.name)
-            $("#restName").append(restName)
+            restNameInput = results.restaurant.name
+            console.log(restNameInput)
+            //restNameInputAll.push(restNameInput)
+            console.log(restNameInputAll)
+            ///localStorage.setItem("restaurantName", restNameInputAll)
+            localStorage.setItem("restaurantName", restNameInput)
+            zomLat = results.restaurant.location.latitude;
+            console.log(zomLat);
+            zomLng = results.restaurant.location.longitude;
+            console.log(zomLng);
         })
 
     }
@@ -129,6 +145,7 @@ $(document).ready(function () {
                 // console.log(clicked)
             }
             startQuestions();
+
         }
     }
 
@@ -146,13 +163,58 @@ $(document).ready(function () {
         }
 
         if (clicked === 2) {
-            $("#questions").text(questions[2].question);
+            // $("#questions").text(questions[2].question);
             // showPrice()
-            nextQuestion()
+            // nextQuestion()
+            change()
+        }
+        //
+
+
+    }
+    function change() {
+        if (clicked === 2 || restNameInputAll.length === 2) {
+            // $("<index.html>").hide();
+            // $("<results.html>").show();
+
+            window.location.href = "results.html"
+            // $("#restName").text(localStorage.getItem("restaurantName", restNameInput))
+
+
         }
     }
+    idealRestName = localStorage.getItem("restaurantName", restNameInput);
+    //console.log(idealRestName)
+    $("#restName").text(idealRestName);
+    change()
 
-    // $("#restName").append(JSON.stringify(localStorage.getItem("restaurantname")))
-   
+    //Getting the location
+    $("#btnGo").on("click", function () {
+
+        $("#btnGo").attr("href", "https://www.google.com/maps/place/@" + zomLat + "," + zomLng);
+
+
+    });
+    
+    // //Getting the map
+
+    // let map;
+
+    // function initMap() {
+    //   map = new google.maps.Map($("#map"), {
+    //     center: { lat: -34.397, lng: 150.644 },
+    //     zoom: 8,
+    //   });
+    // }
+
+    // initMap()
+
+
+
+
+
+
+
+
 
 });
