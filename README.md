@@ -31,16 +31,16 @@ Bon Appetit!
 The following image shows the web application's appearance and functionality:
 
 Step 1 - Enter Zipcode and select "Let's Eat"
-![restaurant roulette demo](./css/demo1.png=max-height120px)
+![restaurant roulette demo](./css/demo1.png)
 
 Step 2 - Choose your desired cuisine
-![restaurant roulette demo](./css/demo2.png=max-height120px)
+![restaurant roulette demo](./css/demo2.png)
 
 Step 3 - Set the radius distance to which you are willing to travel
-![restaurant roulette demo](./css/demo3.png=max-height120px)
+![restaurant roulette demo](./css/demo3.png)
 
 Step 4 - Your results will be displayed and your food journey will begin!
-![restaurant roulette demo](./css/demo4.png=max-height120px)
+![restaurant roulette demo](./css/demo4.png)
 
 Thank you for trying out our wonderful App!
 
