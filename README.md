@@ -63,14 +63,13 @@ Project 1 meets all technical acceptance, deployment, app quality, repository qu
     * Prepared a professional presentation with Prezi
 
 ## Resources
-
-[zippopotam](https://www.zippopotam.us/)
-[zomato](https://developers.zomato.com/api)
-[googlemaps](https://developers.google.com/maps)
-[bulma](https://bulma.io/)
-[w3schools](https://www.w3schools.com/)
-[jquery](https://jquery.com/)
-[stackoverflow](https://stackoverflow.com/)
+* [zippopotam](https://www.zippopotam.us/)
+* [zomato](https://developers.zomato.com/api)
+* [googlemaps](https://developers.google.com/maps)
+* [bulma](https://bulma.io/)
+* [w3schools](https://www.w3schools.com/)
+* [jquery](https://jquery.com/)
+* [stackoverflow](https://stackoverflow.com/)
 
 
 ## Made with love by:
