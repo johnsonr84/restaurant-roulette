@@ -13,15 +13,15 @@
     <link rel="stylesheet" href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css" />
     <link rel="stylesheet" type="text/css" href="./css/result.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbgWyXSsHir59jPEK0QD3FsV_ohcgDkJE&callback=initMap&libraries=&v=weekly"
-      defer
-    ></script>
+    <script type="text/javascript"
+        src="http://maps.googleapis.com/maps/api/js?key=AIzaSyACj0_MxehpB3aelZspcCr9mCvroXgI0Ng"></script>
 </head>
 
 <body>
     <!--header-->
-    <h3 class="title is-1 is-spaced has-text-centered has-text-light pt-5 pb-5">Restaurant Roulette</h3>
+    <a href="index.html">
+        <h3 class="title is-1 is-spaced has-text-centered has-text-light pt-5 pb-5">Restaurant Roulette</h3>
+    </a>
     </div>
     <div class="hero is-fullheight-with-navbar">
 
@@ -37,7 +37,7 @@
             <!--row to display restaurant name-->
             <div class="columns is-mobile">
                 <div class="box column is-three-fifths is-offset-one-fifth has-text-dark">
-                    <span class="restResult" id="restName" style ="font-size: 15px; font-weight: bold;">
+                    <span class="restResult" id="restName" style="font-size: 20px; font-weight: bold;">
 
                     </span>
                 </div>
@@ -56,7 +56,7 @@
             <div class="columns is-mobile">
                 <div class="box column is-three-fifths is-offset-one-fifth has-text-light">
                     <!-- div element for map displayed here -->
-                    <div id="map" class="ubtitle has-text-dark pb-5"></div>
+                    <div id="map" class="subtitle has-text-dark pb-5"></div>
                 </div>
             </div>
 
