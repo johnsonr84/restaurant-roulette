@@ -20,9 +20,9 @@ $(document).ready(function () {
   var reviewText = "";
   var idealReviewGrade = "";
   var idealReviewText = "";
-  var mapLng = parseInt(zomLng);
-  var mapLat =parseInt(zomLat);
-  
+  var mapLng = parseInt(localStorage.getItem("zomLng", zomLng));
+  var mapLat =parseInt(localStorage.getItem("zomLat", zomLat));
+  //var imageUrl = '';
   //Clear localStorage every used
   //localStorage.clear();
   //Transition backgrounds effect
@@ -57,8 +57,8 @@ $(document).ready(function () {
       $("#error").text("");
       startQuestions();
     }
-    console.log(zipCode);
-    console.log(questions);
+   // console.log(zipCode);
+   // console.log(questions);
     zipSearch(zipCode);
   });
 
@@ -67,15 +67,15 @@ $(document).ready(function () {
     event.preventDefault();
     clicked++;
     startQuestions();
-    console.log("clicked", clicked);
+    //console.log("clicked", clicked);
     userInput = $(this).val();
     allInput.push(userInput);
-    console.log("allInput", allInput);
+    //console.log("allInput", allInput);
     localStorage.setItem("userInput", allInput);
     radiusInput = allInput[1];
-    console.log("radiusInput", radiusInput);
+    //console.log("radiusInput", radiusInput);
     cuisineInput = allInput[0];
-    console.log("cuisineInput", cuisineInput);
+    //console.log("cuisineInput", cuisineInput);
     // priceInput = allInput[2];
     // console.log(priceInput)
     searchCall(lat, lng, radiusInput, cuisineInput);
@@ -88,18 +88,18 @@ $(document).ready(function () {
       method: "GET",
       async: false,
     }).then(function (response) {
-      console.log(response);
+     // console.log(response);
       lat = response.places[0].latitude;
-      console.log(lat);
+      //console.log(lat);
       lng = response.places[0].longitude;
-      console.log(lng);
+     // console.log(lng);
     });
   }
   //API call for search
   function searchCall(lat, lng, radiusInput, cuisineInput) {
     var priceQueryURL =
       "https://developers.zomato.com/api/v2.1/search?&lat=" + lat + "&lon=" + lng + "&radius=" + radiusInput + "&cuisines=" + cuisineInput + "&sort=real_distance";
-      console.log(priceQueryURL);
+     // console.log(priceQueryURL);
     $.ajax({
       method: "GET",
       crossDomain: true,
@@ -110,30 +110,34 @@ $(document).ready(function () {
         "user-key": zomAPI,
       },
     }).then(function (response) {
-      console.log(response);
+     // console.log(response);
       // console.log(priceQueryURL)
       result = response.restaurants;
       r = [Math.floor(Math.random() * result.length)];
       results = result[r];
-      console.log(results);
+     // console.log(results);
       // console.log(results.restaurant.name)
       restNameInput = results.restaurant.name;
-      console.log(restNameInput);
+      //console.log(restNameInput);
       //restNameInputAll.push(restNameInput)
-      console.log(restNameInputAll);
+      //console.log(restNameInputAll);
       ///localStorage.setItem("restaurantName", restNameInputAll)
       localStorage.setItem("restaurantName", restNameInput);
       zomLat = results.restaurant.location.latitude;
-      console.log(zomLat);
+      localStorage.setItem("zomLat", zomLat);
+     // console.log(zomLat);
       zomLng = results.restaurant.location.longitude;
-      console.log(zomLng);
+     // console.log(zomLng);
+      localStorage.setItem("zomLng", zomLng);
       reviewGrade = results.restaurant.user_rating.aggregate_rating;
-      console.log(reviewGrade);
+     // console.log(reviewGrade);
       localStorage.setItem("reviewGrade", reviewGrade);
       reviewText = results.restaurant.user_rating.rating_text;
-      console.log(reviewText);
+      //console.log(reviewText);
       localStorage.setItem("reviewText", reviewText);
-      initMap(mapLat, mapLng)
+      // imageUrl = results.restaurant.photos_url;
+      // console.log(imageUrl);
+      // localStorage.setItem("image", imageUrl);
     });
   }
   //Function for cuisine
@@ -207,22 +211,33 @@ $(document).ready(function () {
 
   //Setting up the review part
   idealReviewGrade = localStorage.getItem("reviewGrade", reviewGrade);
-  console.log(idealReviewGrade);
+ // console.log(idealReviewGrade);
   idealReviewText = localStorage.getItem("reviewText", reviewText);
-  console.log(idealReviewText);
+ // console.log(idealReviewText);
   $(".review").text(idealReviewGrade + "/5 --- " + idealReviewText);
 
   // //Getting the map
   let map;
-
+  
   function initMap() {
+    const pin = {
+      lat: mapLat, lng: mapLng
+    }
     map = new google.maps.Map(document.getElementById("map"), {
-      center: { lat: 0.0, lng: 0.0 },
-      zoom: 8,
+     
+      center: { lat: mapLat, lng: mapLng },
+      zoom: 10,
+    });
+    const marker = new google.maps.Marker({
+      position: pin,
+      map: map
+     
     });
   }
-
-  
   initMap();
-  $("#map").append(map);
+
+  //Setting image
+  // var idealImage = results.restaurant.photos_url;
+  // $("#image").attr("src", idealImage)
+  
 });
