@@ -22,7 +22,7 @@ $(document).ready(function () {
   var idealReviewText = "";
   var mapLng = JSON.parse(localStorage.getItem("zomLng", zomLng));
   var mapLat =JSON.parse(localStorage.getItem("zomLat", zomLat));
-  
+
   //var imageUrl = '';
   //Clear localStorage every used
   //localStorage.clear();
@@ -206,7 +206,9 @@ $(document).ready(function () {
   $("#btnGo").on("click", function () {
     $("#btnGo").attr(
       "href",
+
       "https://www.google.com/maps/search/?api=1&query=" + localStorage.getItem("restaurantName", restNameInput)
+
     );
   });
 
@@ -221,6 +223,7 @@ $(document).ready(function () {
   let map;
   
   function initMap() {
+    
     const pin = {
       lat: mapLat, lng: mapLng
     }
