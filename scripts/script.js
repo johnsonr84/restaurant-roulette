@@ -20,8 +20,9 @@ $(document).ready(function () {
   var reviewText = "";
   var idealReviewGrade = "";
   var idealReviewText = "";
-  var mapLng = parseInt(localStorage.getItem("zomLng", zomLng));
-  var mapLat =parseInt(localStorage.getItem("zomLat", zomLat));
+  var mapLng = JSON.parse(localStorage.getItem("zomLng", zomLng));
+  var mapLat =JSON.parse(localStorage.getItem("zomLat", zomLat));
+  
   //var imageUrl = '';
   //Clear localStorage every used
   //localStorage.clear();
@@ -205,7 +206,7 @@ $(document).ready(function () {
   $("#btnGo").on("click", function () {
     $("#btnGo").attr(
       "href",
-      "https://www.google.com/maps/place/@" + zomLat + "," + zomLng
+      "https://www.google.com/maps/search/?api=1&query=" + localStorage.getItem("restaurantName", restNameInput)
     );
   });
 

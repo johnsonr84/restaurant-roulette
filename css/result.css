@@ -49,9 +49,6 @@ body {
     height: 300px;
   }
 
-  /* html,
-  body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  } */
+ #resultMemo {
+  text-shadow: 0 1px 2px;
+ }
