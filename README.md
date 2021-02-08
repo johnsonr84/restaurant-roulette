@@ -82,3 +82,5 @@ Koffi Danhounsrou
 <https://github.com/Koffidanh>
 Shane Townsend
 <https://github.com/ShaneLT97>
+
+* License by MIT
